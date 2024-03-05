@@ -16,6 +16,14 @@
     margin: 45px auto 0 auto;
 }
 
+.button__long:active {
+    transform: scale(0.53);
+}
+
+.button__long:disabled {
+    filter: grayscale(.5);
+}
+
 .inner {
     position: relative;
     background-color: #9F0013;

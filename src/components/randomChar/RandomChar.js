@@ -3,6 +3,8 @@ import Spinner from '../spinner/Spinner';
 import Error from '../error/Error';
 import MarvelService from '../../services/MarvelService';
 import mjolnir from '../../resources/img/mjolnir.png';
+import '../style/button.css';
+import '../style/style.css';
 
 import './RandomChar.css';
 

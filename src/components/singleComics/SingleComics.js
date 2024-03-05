@@ -1,4 +1,6 @@
 import xMen from '../../resources/img/x-men.png';
+import '../style/button.css';
+import '../style/style.css';
 
 import './SingleComics.css';
 

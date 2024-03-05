@@ -1,4 +1,7 @@
-import './AppHeader.css'
+import './AppHeader.css';
+import '../style/button.css';
+import '../style/style.css';
+
 const AppHeader = () => {
     return (
         <header className="app__header">

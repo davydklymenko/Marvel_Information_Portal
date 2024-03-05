@@ -31,7 +31,10 @@ class App extends Component {
                         <CharInfo id={this.state.selectedChar}/>
                       </ErrorBoundary>
                   </div>
-            <img className="bg-decoration" src={decoration} alt="vision"/>
+            <img className="bg-decoration" 
+                 style={{ position: 'absolute', right: '270px' }}
+                 src={decoration} 
+                 alt="vision"/>
       </div>
     )
   }

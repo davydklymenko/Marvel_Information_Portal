@@ -1,5 +1,7 @@
 import uw from '../../resources/img/UW.png';
 import xMen from '../../resources/img/x-men.png';
+import '../style/button.css';
+import '../style/style.css';
 
 import './ComicsList.css';
 

@@ -3,6 +3,8 @@ import MarvelService from '../../services/MarvelService';
 import Error from '../error/Error';
 import Spinner from '../spinner/Spinner';
 import Skeleton from '../skeleton/Skeleton';
+import '../style/button.css';
+import '../style/style.css';
 
 import './CharInfo.css';
 
@@ -82,7 +84,7 @@ const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki, comics} = char;
 
     let imgStyle = {'objectFit' : 'cover'};
-    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' || 'http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif') {
         imgStyle = {'objectFit' : 'contain'};
     }
     return (
