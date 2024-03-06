@@ -24,17 +24,25 @@ class App extends Component {
     return (
       <div className="App">
         <AppHeader/>
-        <RandomChar/>
+          <main>
+            <ErrorBoundary>
+              <RandomChar/>
+            </ErrorBoundary>
                   <div className="char__content">
-                    <CharList onCharSelected={this.onCharSelected}/>
+                    <ErrorBoundary>
+                       <CharList onCharSelected={this.onCharSelected}/>
+                    </ErrorBoundary>
+              
                       <ErrorBoundary>
                         <CharInfo id={this.state.selectedChar}/>
                       </ErrorBoundary>
                   </div>
+
             <img className="bg-decoration" 
-                 style={{ position: 'absolute', right: '270px' }}
+                 style={{ position: 'relative', marginRight: '270px', marginBottom: '1500px' }}
                  src={decoration} 
                  alt="vision"/>
+        </main>
       </div>
     )
   }
