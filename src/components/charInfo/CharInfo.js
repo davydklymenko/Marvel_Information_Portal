@@ -90,7 +90,6 @@ const View = ({char}) => {
     return (
         <>
         <div className="char__basics">
-            <p>Подзвонити Ігоркові про проблему</p>
             <img src={thumbnail} alt={name} style={imgStyle}/>
                 <div>
                     <div className="char__info-name">{name}</div>

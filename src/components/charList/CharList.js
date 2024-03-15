@@ -13,6 +13,7 @@ class CharList extends Component {
         loading: true,
         error: false,
         newItemLoading: false,
+        selected: false,
         offset: 1538
     }
 
@@ -57,6 +58,20 @@ class CharList extends Component {
         })
     }
 
+    itemsRefs = [];
+
+    setRef = (ref) => {
+        this.itemsRefs.push(ref);
+    }
+
+    focusOnItem = (id) => {
+        if (this.itemsRefs[id]) {
+            this.itemsRefs.forEach(item => item.classList.remove('char__item_selected'));
+            this.itemsRefs[id].classList.add('char__item_selected');
+            this.itemsRefs[id].focus();
+        }
+    }
+
     renderItem(arr) {
         const items = arr.map((item) => {
 
@@ -67,9 +82,14 @@ class CharList extends Component {
 
             return (
                 <li 
-                    className="char__item" 
+                    className="char__item"
+                    tabIndex={0}
+                    ref={this.setRef}
                     key={item.id}
-                    onClick={() => this.props.onCharSelected(item.id)}>
+                    onClick={(i) => {
+                        this.props.onCharSelected(item.id);
+                        this.focusOnItem(i); 
+                    }}>
                         <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
                         <div className="char__name">{item.name}</div>
                 </li>
@@ -99,7 +119,8 @@ class CharList extends Component {
                 className="button button__main button__long"
                 disabled={newItemLoading}
                 style={{'display': charEnded ? 'none' : 'block'}}
-                onClick={() => this.onRequest(offset)}>
+
+                onClick={() => this.onRequest(offset)} >
                     <div className="inner">load more</div>
                 </button>
             </div>
