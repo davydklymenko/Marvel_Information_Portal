@@ -26,6 +26,10 @@ li {
    margin: 0 8px;
 }
 
+li:hover {
+    color: #9F0013;
+}
+
 a:hover {
     color: #9F0013;
 }

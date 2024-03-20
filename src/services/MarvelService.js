@@ -28,12 +28,13 @@ class MarvelService {
 
     _transformCharacter = (char) => {
         return {
+            id: char.id,
             name: char.name,
             description: char.description ? `${char.description.slice(0, 230)}...Learn More on Wiki` : 'No description with this character.',
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             homepage: char.urls[0].url,
             wiki: char.urls[1].url,
-            comics: char.comics.items ? null : 'No comics with this character.'
+            comics: char.comics.items.length ? char.comics.items.map(item => item.name) : []
         }
     }
 

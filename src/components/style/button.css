@@ -18,6 +18,7 @@
     transition: none;
 }
 
+
 .inner::before {
     border-color: #9F0013 transparent;
     border-style: solid;

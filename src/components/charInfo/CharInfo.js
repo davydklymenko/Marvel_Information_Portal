@@ -87,6 +87,9 @@ const View = ({char}) => {
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' || 'http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif') {
         imgStyle = {'objectFit' : 'contain'};
     }
+
+    let comicsLimit = comics.slice(0, 9);
+
     return (
         <>
         <div className="char__basics">
@@ -107,17 +110,14 @@ const View = ({char}) => {
                     {description}
                 </div>
                 <div className="char__comics">Comics:</div>
-                    <ul className="char__comics-list">
-                        {
-                            comics.map((item,i) => {
-                                // eslint-disable-next-line
-                                if (i > 9) return;
-                                return(
-                                    <li key={i} className="char__comics-item">{item.name}</li>
-                                )
-                            })
-                        }
-                    </ul>
+                {
+                     comicsLimit.length > 0 ? (
+                <ul className="char__comics-list">
+                    {comicsLimit.map((comic, i) => <li key={i} className="char__comics-item">{comic}</li>)}
+                </ul>
+                
+            ) : <p>No comics available for this character.</p>
+        }
         </>
     )
 }

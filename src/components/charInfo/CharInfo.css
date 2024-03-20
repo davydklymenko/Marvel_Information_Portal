@@ -1,6 +1,6 @@
 
 .char__info {
-    padding: 15px;
+        padding: 10px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
         position: relative;
         z-index: 5;
@@ -14,8 +14,8 @@
 }
 
 .char__basics img {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     object-fit: cover;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .char__info-name {
-    padding: 25px;
+        padding: 15px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
         position: relative;
         z-index: 5;
@@ -40,8 +40,8 @@
 }
 
 .char__descr {
-    margin-top: 15px;
-        font-size: 14px;
+    margin-top: 0;
+        font-size: 19px;
         line-height: 18px;
 }
 
