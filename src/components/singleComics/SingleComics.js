@@ -4,6 +4,8 @@ import '../style/style.css';
 
 import './SingleComics.css';
 
+import React from 'react';
+
 const SingleComic = () => {
     return (
         <div className="single-comic">

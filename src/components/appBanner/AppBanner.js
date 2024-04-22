@@ -1,18 +1,13 @@
 import './AppBanner.css';
-import '../style/button.css';
-import '../style/style/css';
-import avengers from '../../resources/img/Avengers.png';
-import avengersLogo from '../../resources/img/Avengers_logo.png';
+import React from 'react';
 
 const AppBanner = () => {
     return (
         <div className="app__banner">
-            <img src={avengers} alt="Avengers"/>
             <div className="app__banner-text">
                 New comics every week!<br/>
                 Stay tuned!
             </div>
-            <img src={avengersLogo} alt="Avengers logo"/>
         </div>
     )
 }

@@ -1,125 +1,113 @@
-import { Component } from 'react';
-import MarvelService from '../../services/MarvelService';
+import React, { useState, useEffect } from 'react'; 
+
+import useMarvelService from '../../services/MarvelService';
 import Error from '../error/Error';
 import Spinner from '../spinner/Spinner';
 import Skeleton from '../skeleton/Skeleton';
 import '../style/button.css';
 import '../style/style.css';
-
 import './CharInfo.css';
 
-class CharInfo extends Component {
-    state = {
-        char: null,
-        loading: false,
-        error: false
-    }
+import PropTypes from 'prop-types';
 
-    marvelService = new MarvelService();
+const CharInfo = (props) => {
 
+    const [char, setChar] = useState(null);
 
-    updateChar = () => {
-        const {id} = this.props;
-        if (!id) {
+    const {loading, error, getCharacter, clearError} = useMarvelService();
+
+    useEffect(() => {
+        updateChar()
+    }, [props.charId])
+
+    const updateChar = () => {
+        const {charId} = props;
+        if (!charId) {
             return;
         }
-        this.onCharLoading();
-        this.marvelService
-            .getCharacter(id)
-            .then(this.onCharLoaded)
-            .catch(this.onError);
+
+        clearError();
+        getCharacter(charId)
+        .then(onCharLoaded);
     }
 
-    componentDidMount() {
-        this.updateChar();
+    const onCharLoaded = (char) => {
+        setChar(char);
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.id !== prevProps.id) {
-            this.updateChar();
-        }
-    }
+    const skeleton = char || loading || error ? null : <Skeleton/>;
+    const errorMessage = error ? <Error/> : null;
+    const spinner = loading ? <Spinner/> : null;
+    const content = !(loading || error || !char) ? <View char={char}/> : null;
 
-    onCharLoaded = (char) => {
-        this.setState({
-            char, 
-            loading: false
-        })
-    }
-
-    onCharLoading = () => {
-        this.setState({
-            loading: true
-        })
-    }
-
-    onError = () => {
-        this.setState({
-            loading: false,
-            error: true
-        })
-    }
-
-
-    render () {
-        const {char, loading, error} = this.state;
-
-        const skeleton = char || loading || error ? null : <Skeleton/>;
-        const errorMessage = error ? <Error/> : null;
-        const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error || !char) ? <View char={char}/> : null;
-
-        return (
-            <div className="char__info"> 
-                {skeleton}
-                {errorMessage}
-                {spinner}
-                {content}
-            </div>
-        )
-    }
+    return (
+        <div className="char__info">
+            {skeleton}
+            {errorMessage}
+            {spinner}
+            {content}
+        </div>
+    )
 }
 
-const View = ({char}) => {
-    const {name, description, thumbnail, homepage, wiki, comics} = char;
-
-    let imgStyle = {'objectFit' : 'cover'};
-    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' || 'http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif') {
-        imgStyle = {'objectFit' : 'contain'};
+const View = ({ char }) => {
+    if (!char) {
+        return null;
     }
 
-    let comicsLimit = comics.slice(0, 9);
+    const { name, description, thumbnail, homepage, wiki, comics } = char;
+
+    let imgStyle = { 'objectFit': 'cover' };
+    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        imgStyle = { 'objectFit': 'contain' };
+    }
+
+    const comicsLimit = comics ? comics.slice(0, 9) : [];
 
     return (
         <>
-        <div className="char__basics">
-            <img src={thumbnail} alt={name} style={imgStyle}/>
+            <div className="char__basics">
+                <img src={thumbnail} alt={name} style={imgStyle} />
                 <div>
                     <div className="char__info-name">{name}</div>
-                        <div className="char__btns">
-                            <a href={homepage} className="button button__main">
-                                <div className="inner">homepage</div>
-                            </a>
-                            <a href={wiki} className="button button__secondary">
-                                <div className="inner">Wiki</div>
-                            </a>
-                        </div>
+                    <div className="char__btns">
+                        <a href={homepage} className="button button__main">
+                            <div className="inner">homepage</div>
+                        </a>
+                        <a href={wiki} className="button button__secondary">
+                            <div className="inner">Wiki</div>
+                        </a>
                     </div>
                 </div>
-                <div className="char__descr">
-                    {description}
-                </div>
-                <div className="char__comics">Comics:</div>
+            </div>
+            <div className="char__descr">
+                {description}
+            </div>
+            <div className="char__comics">Comics:</div>
+            <ul className="char__comics-list">
                 {
-                     comicsLimit.length > 0 ? (
-                <ul className="char__comics-list">
-                    {comicsLimit.map((comic, i) => <li key={i} className="char__comics-item">{comic}</li>)}
-                </ul>
-                
-            ) : <p>No comics available for this character.</p>
-        }
+                    comicsLimit.length > 0 ? (
+                        comicsLimit.map((comic, id) => <li key={id} className="char__comics-item">{comic}</li>)
+                    ) : <p>No comics available for this character.</p>
+                }
+            </ul>
         </>
     )
 }
+
+CharInfo.propTypes = {
+    charId: PropTypes.number
+}
+
+View.propTypes = {
+    char: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        thumbnail: PropTypes.string.isRequired,
+        homepage: PropTypes.string.isRequired,
+        wiki: PropTypes.string.isRequired, 
+        comics: PropTypes.array.isRequired
+    }).isRequired
+};
 
 export default CharInfo;

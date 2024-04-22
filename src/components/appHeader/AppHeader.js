@@ -2,6 +2,8 @@ import './AppHeader.css';
 import '../style/button.css';
 import '../style/style.css';
 
+import React from 'react';
+
 const AppHeader = () => {
     return (
         <header className="app__header">
