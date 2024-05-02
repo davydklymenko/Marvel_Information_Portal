@@ -11,7 +11,7 @@
 }
 
 .comics__item {
-    transition: 0.3s transform;
+    transition: .3s;
 }
 
 .comics__item img {

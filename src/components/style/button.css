@@ -13,17 +13,15 @@
 .button__long {
     display: block;
     width: 170px;
-    margin: 45px auto 0 auto;
 }
 
 .inner {
-    position: relative;
+    position: absolute;
     background-color: #9F0013;
     line-height: 18px;
-    padding: 0 18px;
+    padding: 0px;
     transition: none;
 }
-
 
 .inner::before {
     border-color: #9F0013 transparent;

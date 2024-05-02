@@ -1,29 +1,24 @@
-import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import AppHeader from '../appHeader/appHeader';
-import AppWelcome from '../appWelcome/appWelcome';
-import TeachersList from '../teachersList/teachersList';
-import NoNameList from '../nonameList/noname';
-import MartaList from '../martaList/martaList';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AppHeader from "../components/appHeader/AppHeader";
 
-function App() {
-    return (
-        <BrowserRouter>
-            <header>
-                <AppHeader/>
-            </header>
+import { MainPage, ComicsPage } from '../pages';
 
-                <main>
-                    <Routes>
-                        <Route path='/' element={<AppWelcome/>} exact/>
-                        <Route path='/teachers' element={<TeachersList/>} exact />
-                        <Route path='/noname' element={<NoNameList/>} exact />
-                        <Route path='/marta' element={<MartaList/>} exact />
-                    </Routes>
-                </main>
-            
-        </BrowserRouter>
-    );
+const App = () => {
+
+  return (
+    <BrowserRouter>
+        <div className="app">
+          <AppHeader/>
+          <main>
+            <Routes>
+              <Route path="/" element={<MainPage/>}/>
+              <Route index path="/comics" element={<ComicsPage />}/>
+            </Routes>
+          </main>
+      </div>
+    </BrowserRouter>
+  )
 }
 
 export default App;
