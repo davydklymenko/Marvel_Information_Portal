@@ -1,44 +1,29 @@
-import React, { useState } from "react";
-import AppHeader from "../components/appHeader/AppHeader";
-import RandomChar from "../components/randomChar/RandomChar";
-import CharList from "../components/charList/CharList";
-import CharInfo from "../components/charInfo/CharInfo";
-import ComicsList from "../components/comicsList/ComicsList";
-import AppBanner from "../components/appBanner/AppBanner";
+import React from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import AppHeader from '../appHeader/appHeader';
+import AppWelcome from '../appWelcome/appWelcome';
+import TeachersList from '../teachersList/teachersList';
+import NoNameList from '../nonameList/noname';
+import MartaList from '../martaList/martaList';
 
-import decoration from '../../src/resources/img/vision.png';
+function App() {
+    return (
+        <BrowserRouter>
+            <header>
+                <AppHeader/>
+            </header>
 
-import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
-
-const App = () => {
-    
-  const [selectedChar, setChar] = useState(null);
-
-  const onCharSelected = (id) => {
-      setChar(id);
-  }
-
-  return (
-      <div className="app">
-          <AppHeader/>
-          <main>
-                <AppBanner/>
-                    <ComicsList/>
-              {/* <ErrorBoundary>
-                  <RandomChar/>
-              </ErrorBoundary>
-              <div className="char__content">
-                  <ErrorBoundary>
-                      <CharList onCharSelected={onCharSelected}/>
-                  </ErrorBoundary>
-                  <ErrorBoundary>
-                      <CharInfo charId={selectedChar}/>
-                  </ErrorBoundary>
-              </div> */}
-              <img className="bg-decoration" src={decoration} alt="vision"/> 
-          </main>
-      </div>
-  )
+                <main>
+                    <Routes>
+                        <Route path='/' element={<AppWelcome/>} exact/>
+                        <Route path='/teachers' element={<TeachersList/>} exact />
+                        <Route path='/noname' element={<NoNameList/>} exact />
+                        <Route path='/marta' element={<MartaList/>} exact />
+                    </Routes>
+                </main>
+            
+        </BrowserRouter>
+    );
 }
 
 export default App;

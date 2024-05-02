@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wdth,wght@0,112.5,800;1,112.5,800&family=Roboto&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15+Charted&display=swap');
+
+
+.whapper {
+    margin: 0;
+    background-color: #8155FF;
+    height: 102px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 44px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+}
+
+.logo:hover {
+    font-family: "Jersey 15 Charted", sans-serif;
+}
+
+.links-whapper {
+    color: #fff;
+    display: flex;
+    margin-top: 5px;
+}
+
+.face-on-link:hover {
+    color: #ffffffc1;
+} 
+
+.face-on-link {
+    margin: 0 10px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
