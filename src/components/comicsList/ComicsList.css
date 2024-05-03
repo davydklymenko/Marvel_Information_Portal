@@ -39,3 +39,9 @@
 .comics__item-price:hover {
     transform: translateY(-5px);
 }
+
+.button__long {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

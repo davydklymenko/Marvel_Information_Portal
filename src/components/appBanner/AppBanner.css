@@ -1,8 +1,11 @@
 .app__banner {
+    background-color: black;
     margin-top: 10px;
     width: 100%;
-    background-color: black;
-    height: 100px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .app__banner-text {

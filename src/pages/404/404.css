@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
+.message404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message404 b {
+    margin: 0 100px;
+    color: #9F0013;
+    font-size: 140px;
+    font-family: "Days One", sans-serif;
+    font-weight: 600;
+}
+
+.oops {
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.btn {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gohome {
+    padding: 10px;
+    background-color: #9F0013;
+    color: #fff;
+}
+
+.gohome:hover {
+    color: #eeeded;
+}

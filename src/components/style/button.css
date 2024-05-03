@@ -48,49 +48,7 @@
     transition: none;
 }
 
-.inner__main, .inner__secondary:hover {
-    color: #fff;
-}
-
-.inner__secondary.inner {
-    background-color: gray;
-}
-
-.inner__secondary::before {
-    border-color: gray transparent;
-    transition: none;
-}
-
-.inner__secondary::after {
-    border-color: gray transparent; 
-    transition: none;
-}
-
-.button::before {
-    content: '';
-    display: block;
-    height: 10px;
-    margin-left: 10px;
-    transition: none;
-}
-
-.button::after {
-    content: '';
-    display: block;
-    height: 10px;
-    margin-right: 10px;
-    transition: none;
-
-}
-
-.button__main::before, .button__main::after {
-    background-color: #9F0013;
-}
-
-.button__secondary::before, .button__secondary::after {
-    background-color: gray;
-}
-
-.button__secondary::before, .button__secondary::hover {
+.button__secondary:hover .inner::before,
+.button__secondary:hover .inner::after {
     transform: translateY(-5px);
 }
